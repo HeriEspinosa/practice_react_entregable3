@@ -13,8 +13,6 @@ const ResidentInfo = ({ url }) => {
             .catch(err => console.log(err))
     }, [])
 
-    console.log(character);
-
     return (
         <article className='resident'>
             <header>
@@ -24,8 +22,9 @@ const ResidentInfo = ({ url }) => {
                     <span>{character?.status}</span>
                 </div>
             </header>
-            <section>
+            <section className='resident__info'>
                 <h3>{character?.name}</h3>
+                <hr className='resident__hr' />
                 <ul>
                     <li><span>Specie: </span>{character?.species}</li>
                     <li><span>Origin: </span>{character?.origin.name}</li>
