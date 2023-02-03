@@ -1,0 +1,36 @@
+.locationInfo {
+    display: grid;
+    gap: 1em;
+    text-align: center;
+    width: 70%;
+    min-width: 400px;
+    max-width: 600px;
+    background-color: #1d2124;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0px 1px 1px 1px black;
+}
+
+.locationInfo h2 {
+    font-size: 1.6rem;
+    color: #49ae24;
+}
+
+.locationInfo ul li {
+    list-style: none;
+    color: #adacacee;
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 100px;
+}
+
+.locationInfo ul li span{
+    color:aliceblue;
+    font-size: 1.1rem;
+    line-height: 1.5em;
+}
+
+.locationInfo__info {
+    display: flex;
+    justify-content: space-between;
+}

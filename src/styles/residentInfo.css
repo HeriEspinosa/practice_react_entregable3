@@ -1,0 +1,43 @@
+li {
+    list-style: none;
+}
+
+.resident {
+    display:flex;
+    flex-direction: column;
+    justify-content:start;
+    align-items: center;
+    gap: 1em;
+    width: 300px;
+    height: 450px;
+    background-color: #040f10;
+    box-shadow: 1px 2px 1px 1px black;
+    overflow: hidden;
+    position: relative;
+}
+
+.resident__img {
+    width: 300px;
+}
+
+.resident__status{
+    position: absolute;
+    top: 1.2em;
+    background-color: #040f10;
+    width: 6.8em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding-left: 0.5em;
+    border-radius: 0 0.3em 0.3em 0;
+}
+
+.resident__circule {
+    background-color: red;
+    width: 0.7em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: block;
+    font-stretch: normal;
+}

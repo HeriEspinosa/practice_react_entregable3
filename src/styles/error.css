@@ -1,0 +1,18 @@
+.container__err {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.container__err__text {
+    text-align: center;
+}
+
+.container__err img {
+    position: absolute;
+    top: 220px;
+    left: 0;
+    z-index: -1;
+    max-height: 90%;
+}
