@@ -12,6 +12,8 @@ function App() {
   const [infoAPI, setInfoAPI] = useState()
   const [location, setLocation] = useState(getRandomLocation())
   const [hasError, setHasError] = useState(false)
+  const [listLocation, setListLocation] = useState()
+  const [isShow, setIsShow] = useState(true)
 
   useEffect(() => {
     const url = `https://rickandmortyapi.com/api/location/${location}`;
@@ -34,14 +36,41 @@ function App() {
     e.target.inputLocation.value = e.target.inputLocation.value.trim()
   }
 
+  const handleChange = e => {
+    const url = `https://rickandmortyapi.com/api/location/?name=${e.target.value.trim()}`
+    axios.get(url)
+      .then(res => setListLocation(res.data.results))
+      .catch(err => console.log(err))
+  }
+
+  // const handleFocus = () => setIsShow(true)
+  // const handleBlur = () => setIsShow(false)
+
   return (
     <div className="App">
       <Banner />
       <h1 className='tittle'>Rick and Morty</h1>
       <form className='form' onSubmit={handleSubmit}>
-        <input id='inputLocation' type="number" />
+        <input
+          id='inputLocation'
+          type="number"
+          onChange={handleChange}
+        // onFocus={handleFocus}
+        // onBlur={handleBlur}
+        />
         <button id='btn__search'>Search</button>
       </form>
+      {
+        isShow &&
+        <ul>
+          {
+            listLocation?.map(loc => (
+              <li onClick={() => setLocation(loc.id)} key={loc.id}>{loc.name}</li>
+            ))
+          }
+        </ul>
+      }
+
       {
         hasError ?
           <Error />

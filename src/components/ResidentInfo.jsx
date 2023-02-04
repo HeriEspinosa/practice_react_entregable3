@@ -18,7 +18,7 @@ const ResidentInfo = ({ url }) => {
             <header>
                 <img className='resident__img' src={character?.image} alt="" />
                 <div className='resident__status'>
-                    <span className='resident__circule'></span>
+                    <span className='resident__circule `${character?.status}`'></span>
                     <span>{character?.status}</span>
                 </div>
             </header>

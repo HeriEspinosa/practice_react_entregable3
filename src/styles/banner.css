@@ -4,7 +4,7 @@
     width: 100%;
     min-width: 365px;
     height: 4.5em;
-    background: radial-gradient(circle, rgba(73,174,36,1) 0%, rgba(0,0,0,1) 28%);
+    background-color: rgba(0,0,0,1);
     position: absolute;
     top: 0;
     z-index: -1;
@@ -22,6 +22,6 @@
     position: absolute;
     top: -100px;
     right: 1px;
-    width: 190px;
+    width: 180px;
     height: 15em;
 }
