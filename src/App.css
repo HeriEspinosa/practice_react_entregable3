@@ -11,6 +11,15 @@
 .tittle {
   padding: 0.4em 0 0.4em;
   text-shadow: -1px 1.8px 3px black;
+  animation: animation__title linear 2s infinite, animation__title_color ease 4s infinite;
+}
+
+@keyframes animation__title {
+  20% {transform: translateY(-5px);}
+  50% {transform: translateY(10px);}
+}
+@keyframes animation__title_color {
+  50% {color: #49ae24}
 }
 
 .form {
@@ -83,5 +92,8 @@
   
   #inputLocation {
     width: 40%;
+  }
+  .list__location__ul {
+    left: -90px;
   }
 }

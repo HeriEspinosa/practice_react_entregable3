@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Banner from './components/Banner'
 import Error from './components/Error'
+import Footer from './components/Footer'
 import LocationInfo from './components/LocationInfo'
 import ResidentInfo from './components/ResidentInfo'
 import getRandomLocation from './utils/getRandomLocation'
@@ -110,6 +111,7 @@ function App() {
             </div>
           </>
       }
+      <Footer />
     </div>
   )
 }
