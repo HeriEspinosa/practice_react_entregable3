@@ -80,6 +80,7 @@
   background-color: #248318b3;
   transition: background-color 0.2s transform 0.3s;
   transform: scale(1.05);
+  display: block;
 }
 
 @media (max-width: 500px) {
