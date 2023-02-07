@@ -15,6 +15,8 @@ function App() {
   const [listLocation, setListLocation] = useState()
   const [isShow, setIsShow] = useState(true)
 
+  console.log(isShow);
+
   useEffect(() => {
     const url = `https://rickandmortyapi.com/api/location/${location}`;
 
@@ -22,10 +24,12 @@ function App() {
       .then(res => {
         setInfoAPI(res.data)
         setHasError(false)
+        setIsShow(false)
       })
       .catch(err => {
         console.log(err)
         setHasError(true)
+        setIsShow(false)
       })
 
   }, [location])
@@ -41,39 +45,56 @@ function App() {
     axios.get(url)
       .then(res => setListLocation(res.data.results))
       .catch(err => console.log(err))
+    setIsShow(true)
+  }
+  const handleFocus = e => {
+    e.target.value = listLocation
   }
 
-  // const handleFocus = () => setIsShow(true)
-  // const handleBlur = () => setIsShow(false)
 
   return (
     <div className="App">
       <Banner />
       <h1 className='tittle'>Rick and Morty</h1>
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' autocomplete='off' onSubmit={handleSubmit}>
         <input
           id='inputLocation'
           type="number"
+          placeholder='Insert location'
           onChange={handleChange}
-        // onFocus={handleFocus}
-        // onBlur={handleBlur}
+          onFocus={handleFocus}
         />
         <button id='btn__search'>Search</button>
       </form>
       {
-        isShow &&
-        <ul>
-          {
-            listLocation?.map(loc => (
-              <li onClick={() => setLocation(loc.id)} key={loc.id}>{loc.name}</li>
-            ))
-          }
-        </ul>
+        isShow ?
+          <div className='list__location'>
+            <ul className='list__location__ul'>
+              {
+                listLocation?.map(loc => (
+                  <li className='list__location__li'
+                    onClick={
+                      () => {
+                        setLocation(loc.id)
+                        setIsShow(false)
+                      }}
+                    key={loc.id}
+                  >
+                    {loc.name}
+                  </li>))
+              }
+            </ul>
+          </div>
+          :
+          <div className='list__display'>
+          </div>
       }
+
 
       {
         hasError ?
           <Error />
+
           :
           <>
             <LocationInfo infoAPI={infoAPI} />

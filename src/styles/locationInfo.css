@@ -15,7 +15,11 @@
     font-size: 1.6rem;
     color: #49ae24;
 }
-
+.locationInfo ul li span{
+    color:aliceblue;
+    font-size: 1.1rem;
+    line-height: 1.5em;
+}
 .locationInfo ul li {
     list-style: none;
     color: #adacacee;
@@ -24,13 +28,26 @@
     width: 100px;
 }
 
-.locationInfo ul li span{
-    color:aliceblue;
-    font-size: 1.1rem;
-    line-height: 1.5em;
-}
-
 .locationInfo__info {
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+    .locationInfo {
+        gap: 0.6em;
+        min-width: 330px;
+        max-width: 300px;
+        background-color: #1d2124;
+        padding: 0.2em 0.5em 0.9em 0;
+    }
+    .locationInfo h2 {
+    font-size: 1.2rem;
+    }
+    .locationInfo ul li span{
+    font-size: 0.9rem;
+    }
+    .locationInfo ul li {
+    font-size: 0.5rem;
+    }
 }
