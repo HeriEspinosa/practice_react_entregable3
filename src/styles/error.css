@@ -19,9 +19,9 @@
 @media (max-width: 380px) {
     .container__err img {
         position: absolute;
-        top: 300px;
+        top: 350px;
     }
     .container__err__text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 }
