@@ -16,7 +16,7 @@
     max-height: 80%;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 400px) {
     .container__err img {
         position: absolute;
         top: 350px;
