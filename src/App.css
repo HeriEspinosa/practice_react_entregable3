@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
   gap: 2em;
   overflow: hidden;
 }
@@ -84,6 +84,7 @@
 }
 
 @media (max-width: 500px) {
+
   #btn__search {
     width: 18%;
   }
