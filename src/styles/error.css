@@ -13,13 +13,13 @@
     top: 235px;
     left: 0;
     z-index: -1;
-    max-height: 90%;
+    max-height: 80%;
 }
 
 @media (max-width: 380px) {
     .container__err img {
         position: absolute;
-        top: 250px;
+        top: 300px;
     }
     .container__err__text {
     font-size: 1.2rem;

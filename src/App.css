@@ -11,12 +11,11 @@
 .tittle {
   padding: 0.4em 0 0.4em;
   text-shadow: -1px 1.8px 3px black;
-  animation: animation__title linear 2s infinite, animation__title_color ease 4s infinite;
+  animation: animation__title linear 3s infinite, animation__title_color ease 3s infinite;
 }
 
 @keyframes animation__title {
-  20% {transform: translateY(-5px);}
-  50% {transform: translateY(10px);}
+  50% {transform: scale(1.05);}
 }
 @keyframes animation__title_color {
   50% {color: #49ae24}
@@ -65,13 +64,14 @@
 }
 .list__location__ul {
   background-color: #1d2124;
-  padding: 1em;
+  width: 220px;
+  padding: 0.5em;
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   cursor: pointer;
   position: absolute;
   top: -34px;
-  left: -130px;
+  left: -118px;
   z-index: 1;
   display: grid;
   gap: 0.3em;
@@ -80,9 +80,6 @@
   background-color: #248318b3;
   transition: background-color 0.2s transform 0.3s;
   transform: scale(1.05);
-}
-.list__display {
-  display: none;
 }
 
 @media (max-width: 500px) {
@@ -94,6 +91,7 @@
     width: 40%;
   }
   .list__location__ul {
-    left: -90px;
+    left: -80px;
+    width: 175px;
   }
 }

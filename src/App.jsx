@@ -4,19 +4,19 @@ import './App.css'
 import Banner from './components/Banner'
 import Error from './components/Error'
 import Footer from './components/Footer'
+import Loading from './components/Loading'
 import LocationInfo from './components/LocationInfo'
 import ResidentInfo from './components/ResidentInfo'
 import getRandomLocation from './utils/getRandomLocation'
 
 function App() {
 
-  const [infoAPI, setInfoAPI] = useState()
-  const [location, setLocation] = useState(getRandomLocation())
-  const [hasError, setHasError] = useState(false)
-  const [listLocation, setListLocation] = useState()
-  const [isShow, setIsShow] = useState(true)
-
-  console.log(isShow);
+  const [infoAPI, setInfoAPI] = useState();
+  const [location, setLocation] = useState(getRandomLocation());
+  const [hasError, setHasError] = useState(false);
+  const [listLocation, setListLocation] = useState();
+  const [isShow, setIsShow] = useState(true);
+  const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
     const url = `https://rickandmortyapi.com/api/location/${location}`;
@@ -32,6 +32,7 @@ function App() {
         setHasError(true)
         setIsShow(false)
       })
+      .finally(() => setisLoading(false))
 
   }, [location])
 
@@ -54,65 +55,77 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Banner />
-      <h1 className='tittle'>Rick and Morty</h1>
-      <form className='form' autocomplete='off' onSubmit={handleSubmit}>
-        <input
-          id='inputLocation'
-          type="number"
-          placeholder='Insert location'
-          onChange={handleChange}
-          onFocus={handleFocus}
-        />
-        <button id='btn__search'>Search</button>
-      </form>
-      {
-        isShow ?
-          <div className='list__location'>
-            <ul className='list__location__ul'>
+    <>
+      <div className="App" onClick={() => setIsShow(false)}>
+        {
+          isLoading ?
+            <Loading />
+            :
+            <>
+              <Banner />
+              <h1 className='tittle'>Rick and Morty</h1>
+              <form className='form' autocomplete='off' onSubmit={handleSubmit}>
+                <input
+                  id='inputLocation'
+                  type="number"
+                  placeholder='Insert location'
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                />
+                <button id='btn__search'>Search</button>
+              </form>
+
               {
-                listLocation?.map(loc => (
-                  <li className='list__location__li'
-                    onClick={
-                      () => {
-                        setLocation(loc.id)
-                        setIsShow(false)
-                      }}
-                    key={loc.id}
-                  >
-                    {loc.name}
-                  </li>))
+                isShow ?
+                  <div className='list__location'>
+                    <ul className='list__location__ul'>
+                      {
+                        listLocation?.map(loc => (
+                          <li className='list__location__li'
+                            onClick={
+                              () => {
+                                setLocation(loc.id)
+                                setIsShow(false)
+                              }}
+                            key={loc.id}
+                          >
+                            {loc.name}
+                          </li>))
+                      }
+                    </ul>
+                  </div>
+                  :
+                  <div className='list__display'>
+                  </div>
               }
-            </ul>
-          </div>
-          :
-          <div className='list__display'>
-          </div>
-      }
 
 
-      {
-        hasError ?
-          <Error />
-
-          :
-          <>
-            <LocationInfo infoAPI={infoAPI} />
-            <div className='container__resident'>
               {
-                infoAPI?.residents.map(url => (
-                  <ResidentInfo
-                    key={url}
-                    url={url}
-                  />
-                ))
+                hasError ?
+                  <Error />
+
+                  :
+                  <>
+                    <LocationInfo infoAPI={infoAPI} />
+                    <div className='container__resident'>
+                      {
+                        infoAPI?.residents.map(url => (
+                          <ResidentInfo
+                            key={url}
+                            url={url}
+                          />
+                        ))
+                      }
+                    </div>
+                  </>
               }
-            </div>
-          </>
-      }
+            </>
+        }
+      </div>
+
       <Footer />
-    </div>
+    </>
+
   )
 }
 
