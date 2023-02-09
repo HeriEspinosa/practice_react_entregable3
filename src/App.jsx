@@ -64,7 +64,7 @@ function App() {
             <>
               <Banner />
               <h1 className='tittle'>Rick and Morty</h1>
-              <form className='form' autocomplete='off' onSubmit={handleSubmit}>
+              <form className='form' autocomplete="off" onSubmit={handleSubmit}>
                 <input
                   id='inputLocation'
                   type="number"
